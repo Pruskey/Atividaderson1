@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Adivinhador</title>
+</head>
+<body>
+    <h1>Adivinhador</h1>
+    <p id="numero"></p>
+    <input type="number" id="adivinhe" placeholder="Adivinhe aqui">
+    <button onclick="gerarNumero()">Gerar Número</button>
+    <button onclick="verificar()">Verificar</button>
+    <p id="mensagem"></p>
+
+    <script>
+        var numero;
+
+        function gerarNumero() {
+            numero = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("numero").innerText = "Número gerado! Adivinhe...";
+            document.getElementById("mensagem").innerText = "";
+        }
+
+        function verificar() {
+            var adivinhe = parseInt(document.getElementById("adivinhe").value);
+            var mensagem = "";
+
+            if (adivinhe === numero) {
+                mensagem = "Acertou!";
+            } else if (adivinhe < numero) {
+                mensagem = "Errou! O número é maior.";
+            } else {
+                mensagem = "Errou! O número é menor.";
+            }
+
+            document.getElementById("mensagem").innerText = mensagem;
+        }
+    </script>
+</body>
+</html>
